@@ -1,0 +1,85 @@
+#####
+# Built & Tested against: v3.0.0-rc.16
+#
+# **Notes**
+#   - You can override this file with your own `lando.yml` or, a Git ignored `.lando.local.yml`
+#   - The first time that this project is launched, it will take Lando a while to get past "waiting until nginx service is ready"
+#     This is because Magento has not yet been setup and is 302-redirecting "/" to "/setup" while Lando is hoping for a "200"
+#     response. One the setup has completed Lando will show a ready-state much more quickly on the next start-up.
+
+# Give this Lando project a unique name
+name: m2-community
+
+# Start with the default LEMP recipe
+recipe: lemp
+
+proxy:
+  # Set Magento URL
+  appserver_nginx:
+    - magento2.lndo.site
+
+# Configure the LEMP recipe
+config:
+  # PHP 7.2 for Magento 2.2.3 - adjust as needed
+  php: '7.2'
+  webroot: pub
+  database: mysql
+
+  # Optionally activate xdebug
+  xdebug: false
+
+  # Optionally mix in your own config files
+  #
+  # If ommitted this will use "sane defaults" for your recipe type
+  config:
+    # Relative to Magento project root
+    vhosts: dev/lando/config/nginx.conf
+    #php: config/php.ini
+
+services:
+  # Provide some custom options for the database service
+  database:
+    # Make a random port available to the host machine for your MySQL connection.
+    # This can be a number if you want to map a specific port
+    portforward: true
+
+  appserver:
+    # This will only run the first time `lando start` is executed or on `lando rebuild`
+    build_as_root:
+      # Install Magento-required xsl extension
+      - apt-get update -y -q && apt-get install -y libxslt-dev && docker-php-ext-install xsl
+
+tooling:
+  magento:download:
+    description: Initialize Magento 2 project in current directory
+    cmd:
+      # Quoted to ensure the `cut` command is properly escaped
+      - "wget $(curl -s https://api.github.com/repos/magento/magento2/releases/latest | grep zipball_url | cut -d '\\\"' -f 4) -O magento_latest.zip"
+      # Keep `&&` vs multi-line to preserve `tmp` directory when Lando has not been started
+      - unzip magento_latest.zip -d /tmp/magento-extract && cp --verbose -R /tmp/magento-extract/magento*/. /app
+      - "rm magento_latest.zip && cp auth.json.sample auth.json"
+      # Provide setup instructions
+      - "echo \"\n    Magento has been downloaded! Now...\n
+      \n\t 1. Add your Magento credentials to auth.json
+      \n\t\t Magento: https://marketplace.magento.com/customer/accessKeys/
+      \n\t\t GitHub: https://github.com/settings/tokens
+      \n\t 1. `lando start && lando composer install && lando magento:setup:quick #Optional --use-sample-data`
+      \n\n That's it! You will then be able to access your Magento store at https://magento2.lndo.site/  \n
+      \n\n Run `lando` to see available shortcuts such as `lando magento`!  \n
+      \""
+    service: appserver
+
+  magento:setup:quick:
+    description: Automated process to quickly configure Magento for Lando. This command accepts `./bin/magento setup:install` arguments
+    cmd: /app/bin/magento setup:install --db-host database --db-name lemp --db-user lemp --db-password lemp --magento-init-params="MAGE_MODE=developer"
+    service: appserver
+
+  magento:
+    description: Execute ./bin/magento commands
+    cmd: /app/bin/magento
+    service: appserver
+
+  magento:setup:destroy:
+    description: Automated process to quickly reset Magento's database to empty.
+    cmd: /app/bin/magento setup:uninstall
+    service: appserver
