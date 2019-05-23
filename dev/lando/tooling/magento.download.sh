@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 # Download latest Magento 2
-#wget $(curl -s https://api.github.com/repos/magento/magento2/releases/latest | grep zipball_url | cut -d '"' -f 4) -O magento_latest.zip
-#
-## Unzip Magento & copy to /app
-#unzip magento_latest.zip -d /tmp/magento-extract
-#cp --verbose -R /tmp/magento-extract/magento*/. /app
-#
-## Init auth.json
-#rm magento_latest.zip && cp auth.json.sample auth.json
+wget $(curl -s https://api.github.com/repos/magento/magento2/releases/latest | grep zipball_url | cut -d '"' -f 4) -O magento_latest.zip
+
+# Unzip Magento & copy to /app
+unzip magento_latest.zip -d /tmp/magento-extract
+cp --verbose -R /tmp/magento-extract/magento*/. /app
+
+# Init auth.json
+rm magento_latest.zip && cp auth.json.sample auth.json
 
 # Provide next step instructions
 echo ""
