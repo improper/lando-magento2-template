@@ -18,6 +18,7 @@
         - pub/media
         - pub/static
         - var
+        - generated
      ```
 
 # Quick Setup
