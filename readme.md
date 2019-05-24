@@ -17,10 +17,7 @@
         # Improve performance of Magento-writable directories
         - pub/media
         - pub/static
-        - var/cache # If using file-based cache
-        - var/page_cache # If using file-based cache
-        - var/session # If using file-based sessions
-        - generated # Magento generated code
+        - var
      ```
 
 # Quick Setup
