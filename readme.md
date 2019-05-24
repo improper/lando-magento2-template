@@ -10,9 +10,9 @@
      # Add to .lando.yml as a root property
      excludes: # **Warning:** Experimental Lando Feature
         - vendor # Optionally disable syncing of this directory
-        - !vendor/my-company/my-dev-module # Restore syncing to a subdirectory of an excluded directory
+        - '!vendor/my-company/my-dev-module' # Restore syncing to a subdirectory of an excluded directory
         - node_modules
-        - !node_modules/my-company/my-dev-module
+        - '!node_modules/my-company/my-dev-module'
         # Improve performance of Magento-writable directories
         - pub/media
         - pub/static
