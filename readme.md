@@ -9,10 +9,17 @@
      ```yaml
      # Add to .lando.yml as a root property
      excludes: # **Warning:** Experimental Lando Feature
-        - vendor # Do not sync this
-        - !vendor/my-company/my-dev-module # Do Sync this
-        - node_modules # Do not sync this
-        - !node_modules/my-company/my-dev-module # Do Sync this
+        - vendor # Optionally disable syncing of this directory
+        - !vendor/my-company/my-dev-module # Restore syncing to a subdirectory of an excluded directory
+        - node_modules
+        - !node_modules/my-company/my-dev-module
+        # Improve performance of Magento-writable directories
+        - pub/media
+        - pub/static
+        - var/cache # If using file-based cache
+        - var/page_cache # If using file-based cache
+        - var/session # If using file-based sessions
+        - generated # Magento generated code
      ```
 
 # Quick Setup
