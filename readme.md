@@ -8,6 +8,7 @@
    - For Windows & MacOS, Lando has an experimental feature that disables file synchronization between the host and container that can be implemented as shown below. However, you will need to copy these files manually to your host if using an IDE that depends on the directories you exclude.
      ```yaml
      # Add to .lando.yml as a root property
+     # Must be implemented prior to `lando start`. Otherwise, modification requires `lando rebuild`
      excludes: # **Warning:** Experimental Lando Feature
         - vendor # Optionally disable syncing of this directory
         - '!vendor/my-company/my-dev-module' # Restore syncing to a subdirectory of an excluded directory
