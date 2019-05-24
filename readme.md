@@ -14,8 +14,8 @@
    - GitHub: https://github.com/settings/tokens
 1. Launch your new store and deploy the database:
    ```bash
-   lando start && \
-   lando composer install && \
+   lando start
+   lando composer install
    lando magento:setup:quick # Optional: ----use-sample-data 
    ```
 
