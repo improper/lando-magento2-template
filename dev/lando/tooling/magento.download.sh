@@ -10,6 +10,9 @@ cp --verbose -R /tmp/magento-extract/magento*/. /app
 # Init auth.json
 rm magento_latest.zip && cp auth.json.sample auth.json
 
+# Add Magento Composer repository to composer.json - for use with sample data installation
+composer config repositories.magento composer https://repo.magento.com/
+
 # Provide next step instructions
 echo ""
 echo ""
