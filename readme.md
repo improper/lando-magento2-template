@@ -7,7 +7,7 @@
    - Adding Redis, Elasticsearch, etc.. These services can easily be added following Lando's documentation.
    - For Windows & MacOS, Lando has an experimental feature that disables file synchronization between the host and container that can be implemented as shown below. However, you will need to copy these files manually to your host if using an IDE that depends on the directories you exclude.
    ```yaml
-   # Add to .lando.yaml as a root property
+   # Add to .lando.yml as a root property
    excludes: # **Warning:** Experimental Lando Feature
       - vendor # Do not sync this
       - !vendor/my-company/my-dev-module # Do Sync this
