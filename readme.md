@@ -31,7 +31,7 @@ This repository ships with with a `.lando.base.yaml`. To modify your Lando setup
    
 For best practices, please refer to Lando's [landofile documentaion](https://docs.devwithlando.io/config/lando.html)
 
-##Bonus Info
+## Bonus Info
 
 Run `lando` to see available shortcuts such as `lando magento` and `lando composer`!
 
