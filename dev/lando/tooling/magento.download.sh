@@ -7,11 +7,11 @@ wget $(curl -s https://api.github.com/repos/magento/magento2/releases/latest | g
 unzip magento_latest.zip -d /tmp/magento-extract
 cp --verbose -R /tmp/magento-extract/magento*/. /app
 
-# Init auth.json
-rm magento_latest.zip && cp auth.json.sample auth.json
-
 # Add Magento Composer repository to composer.json - for use with sample data installation
 composer config repositories.magento composer https://repo.magento.com/
+
+# Init auth.json
+rm magento_latest.zip && cp auth.json.sample auth.json
 
 # Provide next step instructions
 echo ""
