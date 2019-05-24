@@ -17,8 +17,6 @@
         # Improve performance of Magento-writable directories
         - pub/media
         - pub/static
-        - var
-        - generated
      ```
 
 # Quick Setup
