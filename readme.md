@@ -3,7 +3,17 @@
 1. This setup expects [Lando](https://docs.devwithlando.io/installation/installing.html) to be installed and ready to go on your machine
 1. This setup expects Magento's stock `nginx.conf.sample` to exist in Magento's project root.
    - **NOTE**: If you follow the Quick Setup instructions this file will be automatically downloaded 
-1. You may experience performance gains by adding Redis, Elasticsearch, etc.. These services can easily be added following Lando's documentation.
+1. You may experience performance gains by:
+   - Adding Redis, Elasticsearch, etc.. These services can easily be added following Lando's documentation.
+   - For Windows & MacOS, Lando has an experimental feature that disables file synchronization between the host and container that can be implemented as shown below. However, you will need to copy these files manually to your host if using an IDE that depends on the directories you exclude.
+   ```yaml
+   # Add to .lando.yaml as a root property
+   excludes: # **Warning:** Experimental Lando Feature
+      - vendor # Do not sync this
+      - !vendor/my-company/my-dev-module # Do Sync this
+      - node_modules # Do not sync this
+      - !node_modules/my-company/my-dev-module # Do Sync this
+   ```
 
 # Quick Setup
 
