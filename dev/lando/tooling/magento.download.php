@@ -101,7 +101,7 @@ class magentoDownloaderCli
         );
         try {
             $this->createProject($composerAuth, $input);
-        }catch (Exception $error){
+        } catch (Exception $error) {
             echo "\n\n Could not create Magento project. Got error: {$error->getMessage()}\n\n";
             exit(1);
         }
@@ -110,17 +110,20 @@ class magentoDownloaderCli
         $this->complete();
     }
 
-    private function complete(){
+    private function complete()
+    {
         echo "\n";
         echo "\n";
         echo "\n";
+        echo "\n";
+        echo "\n    +++++++++++++++++++++++++++++++++++";
         echo "\n";
         echo "\n    Magento has been downloaded! Now...";
         echo "\n      Execute: `lando start && lando composer install && lando magento:setup:quick #Optional --use-sample-data`";
         echo "\n";
-        echo "\nThat's it! You will then be able to access your Magento store at https://magento2.lndo.site/";
+        echo "\n      That's it! You will then be able to access your Magento store at https://magento2.lndo.site/";
         echo "\n";
-        echo "\nRun `lando` to see available shortcuts such as `lando magento` and `lando composer`!";
+        echo "\n      Run `lando` to see available shortcuts such as `lando magento` and `lando composer`!";
         echo "\n";
     }
 
@@ -141,10 +144,13 @@ class magentoDownloaderCli
     private function prepareProject($composerAuth)
     {
         shell_exec("cp -r /tmp/magento/. /app");
-        touch('/app/auth.json');
+        file_put_contents(
+            '/app/nginx.conf.sample',
+            fopen('https://raw.githubusercontent.com/magento/magento2/2.3/nginx.conf.sample', 'r')
+        );
         file_put_contents("/app/auth.json", $composerAuth);
     }
 }
 
 $magentoDownloaderCli = new magentoDownloaderCli((array)$argv);
-var_dump($magentoDownloaderCli->download());
+$magentoDownloaderCli->download();
