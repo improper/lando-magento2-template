@@ -1,0 +1,150 @@
+#!/usr/bin/env php
+<?php
+
+class magentoDownloaderCli
+{
+    private $input = [];
+    const REQUIRED_ARGS = [
+        'mage-edition',
+        'mage-version',
+        'mage-access-key-public',
+        'mage-access-key-private',
+        'github-token',
+    ];
+
+    public function __construct(array $argv)
+    {
+        $this->input = $this->parseArgs($argv);
+
+        $this->validateInput();
+    }
+
+    private function parseArgs($argv)
+    {
+        array_shift($argv);
+        $o = array();
+        foreach ($argv as $a) {
+            if (substr($a, 0, 2) == '--') {
+                $eq = strpos($a, '=');
+                if ($eq !== false) {
+                    $o[substr($a, 2, $eq - 2)] = substr($a, $eq + 1);
+                } else {
+                    $k = substr($a, 2);
+                    if (!isset($o[$k])) {
+                        $o[$k] = true;
+                    }
+                }
+            } else if (substr($a, 0, 1) == '-') {
+                if (substr($a, 2, 1) == '=') {
+                    $o[substr($a, 1, 1)] = substr($a, 3);
+                } else {
+                    foreach (str_split(substr($a, 1)) as $k) {
+                        if (!isset($o[$k])) {
+                            $o[$k] = true;
+                        }
+                    }
+                }
+            } else {
+                $o[] = $a;
+            }
+        }
+        return $o;
+    }
+
+    /**
+     * @return array
+     */
+    public function getInput()
+    {
+        return $this->input;
+    }
+
+    private function validateInput()
+    {
+        try {
+            foreach (self::REQUIRED_ARGS as $requiredArg) {
+                $input = $this->getInput();
+                if (!key_exists($requiredArg, $input) || empty($input[$requiredArg]))
+                    throw new Exception("MISSING ARGUMENT: {$requiredArg} is required.");
+            }
+        } catch (Exception $error) {
+            echo "\n{$error->getMessage()}\n\n";
+            exit(1);
+        }
+    }
+
+    /**
+     * @return string
+     * @throws Exception
+     */
+    public function getEdition()
+    {
+        $input = $this->getInput();
+        switch (strtolower($input['mage-edition'])):
+            case 'open source':
+                return 'magento/project-community-edition';
+            case 'commerce':
+                return 'magento/project-enterprise-edition';
+            default:
+                throw new Exception('INVALID ARGUMENT: Unacceptable Magento Edition Provided.');
+        endswitch;
+    }
+
+    public function download()
+    {
+        $input = $this->getInput();
+        $composerAuth = sprintf(
+            '{"http-basic": {"repo.magento.com": {"username": "%s","password": "%s"}}, "github-oauth": {"github.com": "%s"}}',
+            $input['mage-access-key-public'],
+            $input['mage-access-key-private'],
+            $input['github-token']
+        );
+        try {
+            $this->createProject($composerAuth, $input);
+        }catch (Exception $error){
+            echo "\n\n Could not create Magento project. Got error: {$error->getMessage()}\n\n";
+            exit(1);
+        }
+        $this->prepareProject($composerAuth);
+
+        $this->complete();
+    }
+
+    private function complete(){
+        echo "\n";
+        echo "\n";
+        echo "\n";
+        echo "\n";
+        echo "\n    Magento has been downloaded! Now...";
+        echo "\n      Execute: `lando start && lando composer install && lando magento:setup:quick #Optional --use-sample-data`";
+        echo "\n";
+        echo "\nThat's it! You will then be able to access your Magento store at https://magento2.lndo.site/";
+        echo "\n";
+        echo "\nRun `lando` to see available shortcuts such as `lando magento` and `lando composer`!";
+        echo "\n";
+    }
+
+    /**
+     * @param $composerAuth
+     * @param array $input
+     * @throws Exception
+     */
+    private function createProject($composerAuth, array $input)
+    {
+        shell_exec('rm -rf /tmp/magento');
+        shell_exec("export COMPOSER_AUTH='{$composerAuth}'; composer create-project --no-install --repository=https://repo.magento.com/ {$this->getEdition()} /tmp/magento {$input['mage-version']}");
+    }
+
+    /**
+     * @param $composerAuth
+     */
+    private function prepareProject($composerAuth)
+    {
+        shell_exec("cp -r /tmp/magento/. /app");
+        touch('/app/auth.json');
+        file_put_contents("/app/auth.json", $composerAuth);
+    }
+}
+
+$magentoDownloaderCli = new magentoDownloaderCli((array)$argv);
+var_dump($magentoDownloaderCli->download());

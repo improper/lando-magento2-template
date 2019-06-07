@@ -52,8 +52,70 @@ services:
 tooling:
   magento:download:
     description: Initialize Magento 2 project in current directory
-    cmd: /app/dev/lando/tooling/magento.download.sh
+    cmd: /app/dev/lando/tooling/magento.download.php
     service: appserver
+    level: app
+    options:
+      mage-edition:
+        passthrough: true
+        describe: Magento Edition - Open Source or Commerce?
+        interactive:
+          type: list
+          message: Which Magento Edition?
+          default: Open Source
+          choices:
+            - Open Source
+            - Commerce
+
+      mage-version:
+        passthrough: true
+        describe: Magento Version
+        interactive:
+          type: input
+          default: 2.3
+          message: Magento Version
+          weight: 600
+
+      notify-magento:
+        passthrough: false
+        interactive:
+          type: input
+          message: |
+            Fetch your Magento Access keys and then press any key to continue...
+
+            https://marketplace.magento.com/customer/accessKeys/
+          weight: 600
+      mage-access-key-public:
+        passthrough: true
+        describe: Magento Access Key (Public)
+        interactive:
+          type: input
+          message: Magento Access Key (Public)
+          weight: 600
+      mage-access-key-private:
+        passthrough: true
+        describe: Magento Access Key (Private)
+        interactive:
+          type: password
+          message: Magento Access Key (Private)
+          weight: 600
+      notify-github:
+        passthrough: false
+        interactive:
+          type: input
+          message: |
+            Fetch your GitHub token and then press any key to continue...
+
+            https://github.com/settings/tokens
+          weight: 600
+
+      github-token:
+        passthrough: true
+        describe: GitHub Token
+        interactive:
+          type: password
+          message: GitHub Token
+          weight: 600
 
   magento:setup:quick:
     description: Automated process to quickly configure Magento for Lando. This command accepts `./bin/magento setup:install` arguments
