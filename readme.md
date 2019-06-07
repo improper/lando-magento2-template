@@ -21,12 +21,19 @@
 
 # Quick Setup
 
-1. `git clone git@github.com:improper/lando-magento2-template.git && cd lando-magento2-template`
-1. Run `lando magento:download`
-1. Add your Magento credentials to auth.json
-   - Magento: https://marketplace.magento.com/customer/accessKeys/
-   - GitHub: https://github.com/settings/tokens
-1. Launch your new store and deploy the database:
+1. Clone this template:`git clone git@github.com:improper/lando-magento2-template.git && cd lando-magento2-template`
+1. Download Magento: `lando magento:download`
+   - Your `auth.json` will be automatically generated.
+   - Alternatively, you can pass parameters:
+     ```bash
+     lando magento:download \
+        --mage-edition "Open Source" \
+        --mage-version 2.3 \
+        --mage-access-key-public "3***" \
+        --mage-access-key-private "2***" \
+        --github-token "1***"
+     ```
+1. Launch your new store and deploy the database automatically:
    ```bash
    lando start
    lando composer install
