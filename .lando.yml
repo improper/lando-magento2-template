@@ -1,0 +1,17 @@
+####
+# Lando Project Yaml
+#
+#  This Lando file is meant to be where you define services and tooling specific to your project.
+#  Where .lando.base.yml describes our base Magento tooling and services, this acts as a shared
+#  config for your devs to quickly spin up services such as Redis, Elasticsearch, as well as
+#  project-specific build steps.
+###
+
+name: magento2 # This should be set per project to override .lando.base.yml
+
+#service:
+#  redis-cache: # Add a redis cache service to your project
+#    type: redis
+#  redis-session: # Add a redis session service
+#    type: redis
+

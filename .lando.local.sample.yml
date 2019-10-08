@@ -1,0 +1,27 @@
+####
+# Example Lando Local Config (Git ignored)
+#  - Each developer may provide their own .lando.local.yml to override .lando.yml and .lando.base.yml
+###
+
+####
+# Experimental Windows/Mac Features for Improved Performance
+###
+
+# Add to .lando.yml as a root property
+# Must be implemented prior to `lando start`. Otherwise, modification requires `lando rebuild`
+#excludes: # **Warning:** Experimental Lando Feature
+#  - vendor # Optionally disable syncing of this directory
+#  - '!vendor/my-company/my-dev-module' # Restore syncing to a subdirectory of an excluded directory
+#  - node_modules
+#  - '!node_modules/my-company/my-dev-module'
+#  # Improve performance of Magento-writable directories
+#  - pub/media
+#  - pub/static
+#  - generated
+#  - var/cache
+#  - var/page_cache
+#  - var/log
+
+#services:
+#  database:
+#    portforward: 30001 # My custom static port!
