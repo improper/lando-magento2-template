@@ -62,10 +62,13 @@ class magentoDownloaderCli
     private function validateInput()
     {
         try {
+            $input = $this->getInput();
             foreach (self::REQUIRED_ARGS as $requiredArg) {
-                $input = $this->getInput();
-                if (!key_exists($requiredArg, $input) || empty($input[$requiredArg]))
+                $trimmedInput = trim($input[$requiredArg]);
+                if (!key_exists($requiredArg, $input) || empty($trimmedInput))
                     throw new Exception("MISSING ARGUMENT: {$requiredArg} is required.");
+
+                $this->input[$requiredArg] = trim($trimmedInput);
             }
         } catch (Exception $error) {
             echo "\n{$error->getMessage()}\n\n";
@@ -98,7 +101,7 @@ class magentoDownloaderCli
             $input['mage-access-key-public'],
             $input['mage-access-key-private'],
             $input['github-token']
-        );
+            );
         try {
             $this->createProject($composerAuth, $input);
         } catch (Exception $error) {
