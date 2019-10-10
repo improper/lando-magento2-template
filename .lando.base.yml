@@ -131,7 +131,3 @@ tooling:
     description: Automated process to quickly reset Magento's database to empty.
     cmd: /app/bin/magento setup:uninstall
     service: appserver
-
-#    //61f3fd4bb6923717a14af6cceac0c59f
-#    //871bdc3e006d3bd78184b2afdc226049
-#    //296b5b43491e069a8d6e497ef18193cf208294d2
