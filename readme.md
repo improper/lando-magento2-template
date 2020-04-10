@@ -35,7 +35,7 @@
      ```
 1. Launch your new store and deploy the database automatically:
    ```bash
-   lando start
+   lando start or lando rebuild (rebuild only to force install missing php extension.  Usually happens when you havnt renamed the app and youve got existing containers hangin around. lando list to check)
    lando composer install
    lando magento:setup:quick # Optional: ----use-sample-data 
    ```
