@@ -40,7 +40,16 @@
    lando magento:setup:quick # Optional: ----use-sample-data 
    ```
 
-That's it! Your store is ready for development: https://magento2.lndo.site/  
+You should now be able to access your local installation of Magento: https://magento2.lndo.site/ (or whatever proxy value you have set in your lando.base.yaml file)
+
+If you have followed the quicksetup without providing any other parameters be aware your Magento database will have no base_url or base_url_secure values yet.  This can and in most cases will cause a redirect loop when acessing the Magento admin page. 
+
+All lndo.site sub-domains https://magento2.lndo.site/ are real URL's, therefor wont be available offline.
+Alternativly localhost.xxxx URL's are available offline but change with every lando rebuild.  If your running localhost URL's you will need to update your Magento URL's after each rebuild and provide the new localhost values.
+
+lando magento setup:store-config:set --base-url="" --base-url-secure=""
+
+
 
 # Customizing Lando
 
