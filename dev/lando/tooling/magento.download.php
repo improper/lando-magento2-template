@@ -124,7 +124,7 @@ class magentoDownloaderCli
         echo "\n    Magento has been downloaded! Now...";
         echo "\n      Execute: `lando start && lando composer install && lando magento:setup:quick #Optional --use-sample-data`";
         echo "\n";
-        echo "\n      If you experience difficulty installing Magento try running the above ccommands 1 at a time to see the error output";
+        echo "\n      If you experience difficulty installing Magento try running the above commands 1 at a time to see the error output";
         echo "\n";
         echo "\n      That's it! You will then be able to access your Magento store at https://magento2.lndo.site/";
         echo "\n";
