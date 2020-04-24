@@ -47,8 +47,9 @@ If you have followed the quicksetup without providing any other parameters be aw
 All lndo.site sub-domains https://magento2.lndo.site/ are real URL's, therefor wont be available offline.
 Alternativly localhost.xxxx URL's are available offline but change with every lando rebuild.  If your running localhost URL's you will need to update your Magento URL's after each rebuild and provide the new localhost values.
 
-lando magento setup:store-config:set --base-url="" --base-url-secure=""
-
+   ```bash
+   lando magento setup:store-config:set --base-url="" --base-url-secure=""
+   ```
 
 
 # Customizing Lando
