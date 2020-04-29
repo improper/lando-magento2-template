@@ -48,6 +48,8 @@ services:
     build_as_root:
       # Install Magento-required xsl extension
       - apt-get update -y -q && apt-get install -y libxslt-dev && docker-php-ext-install xsl
+  node:
+    type: 'node:12'
 
 tooling:
   magento:download:
@@ -118,16 +120,35 @@ tooling:
           weight: 600
 
   magento:setup:quick:
-    description: Automated process to quickly configure Magento for Lando. This command accepts `./bin/magento setup:install` arguments
-    cmd: /app/bin/magento setup:install --db-host database --db-name lemp --db-user lemp --db-password lemp --magento-init-params="MAGE_MODE=developer"
+    description: Automated process to quickly configure Magento for Lando. Accepts `bin/magento setup:install` arguments
+    cmd: test -f /app/bin/magento || exit 0 && /app/bin/magento setup:install --db-host database --db-name lemp --db-user lemp --db-password lemp --magento-init-params="MAGE_MODE=developer"
     service: appserver
+    options: # Options are required in order for `lando --help` to work for this command
+      "help":
+        passthrough: false
 
   magento:
     description: Execute ./bin/magento commands
-    cmd: /app/bin/magento
+    cmd: test -f /app/bin/magento && /app/bin/magento
     service: appserver
 
   magento:setup:destroy:
     description: Automated process to quickly reset Magento's database to empty.
     cmd: /app/bin/magento setup:uninstall
     service: appserver
+    options: # Options are required in order for `lando --help` to work for this command
+      "help":
+        passthrough: false
+        description: Use `lando --help magento:setup:destroy`
+
+  node:
+    description: Run node
+    service: node
+
+  yarn:
+    description: Run node
+    service: node
+
+  npm:
+    description: Run node
+    service: node

@@ -1,0 +1,20 @@
+{
+  "name": "@improper/lando-magento2-init",
+  "version": "1.0.0",
+  "description": "Project initializing helper and validator",
+  "main": "index.js",
+  "author": "Tyler Mills",
+  "license": "MIT",
+  "devDependencies": {
+    "leia-parser": "^0.3.4",
+    "mocha": "^7.1.2"
+  },
+  "scripts": {
+    "generate-tests": "leia  ../readme.md test -t 'Quick Setup' -t Setup -t Test -t Example -t 'Bonus Info' -c 'Cleanup'",
+    "test": "yarn generate-tests && mocha test"
+  },
+  "dependencies": {
+    "chai": "^4.2.0",
+    "command-line-test": "^1.0.10"
+  }
+}

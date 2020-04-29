@@ -1,4 +1,5 @@
-# Important notes
+Important notes
+---------------
 
 1. This setup expects [Lando](https://docs.devwithlando.io/installation/installing.html) to be installed and ready to go on your machine
 1. This setup expects Magento's stock `nginx.conf.sample` to exist in Magento's project root.
@@ -19,62 +20,94 @@
         - pub/static
      ```
 
-# Quick Setup
+Getting Started with Magento 2 & Lando
+======================================
 
-1. Clone this template:`git clone git@github.com:improper/lando-magento2-template.git && cd lando-magento2-template`
-1. Download Magento: `lando magento:download`
-   - Your `auth.json` will be automatically generated.
-   - Alternatively, you can pass parameters:
-     ```bash
-     lando magento:download \
-        --mage-edition "Open Source" \
-        --mage-version 2.3 \
-        --mage-access-key-public "3***" \
-        --mage-access-key-private "2***" \
-        --github-token "1***"
-     ```
-1. Launch your new store and deploy the database automatically:
-   ```bash
-   lando start or lando rebuild (rebuild only to force install missing php extension.  Usually happens when you havnt renamed the app and youve got existing containers hangin around. lando list to check)
-   lando composer install
-   lando magento:setup:quick # Optional: ----use-sample-data 
-   ```
+Quick Setup
+-----------
+
+```
+# Clone and access this repository
+git clone git@github.com:improper/lando-magento2-template.git
+cd lando-magento2-template
+
+# Review Magento Download Options
+cd lando-magento2-template
+lando --help magento:download
+
+# Download Magento. Drop arguments for interactive mode.
+cd lando-magento2-template
+lando magento:download --mage-edition "Open Source" \
+    --mage-version 2.3 \
+    --mage-access-key-private $MAGE_PRIVATE_KEY \
+    --mage-access-key-public $MAGE_PUBLIC_KEY \
+    --github-token $MY_GITHUB_TOKEN \
+    --notify-magento false \
+    --notify-github false
+
+# auth.json has automatically been generated
+cd lando-magento2-template
+cat auth.json
+
+# Deploy Mangento with configured database
+cd lando-magento2-template
+lando start
+lando composer install
+lando magento:setup:quick --use-sample-data 
+```
+
+That's it! Your store is ready for development: https://magento2.lndo.site/  
+
+```
+# Confirm store is accessible via bash
+curl -I -k https://magento2.lndo.site/ && echo 'Good to go!'
+```
 
 You should now be able to access your local installation of Magento: https://magento2.lndo.site/ (or whatever proxy value you have set in your lando.base.yaml file)
 
-If you have followed the quicksetup without providing any other parameters be aware your Magento database will have no base_url or base_url_secure values yet.  This can and in most cases will cause a redirect loop when acessing the Magento admin page. 
+If you have followed the quick setup without providing any other parameters be aware your Magento database will have no base_url or base_url_secure values yet.  This can and in most cases will cause a redirect loop when acessing the Magento admin page.
 
-All lndo.site sub-domains https://magento2.lndo.site/ are real URL's, therefor wont be available offline.
-Alternativly localhost.xxxx URL's are available offline but change with every lando rebuild.  If your running localhost URL's you will need to update your Magento URL's after each rebuild and provide the new localhost values.
+All lndo.site sub-domains https://magento2.lndo.site/ are real URL's, therefor won't be available offline.
 
-   ```bash
-   lando magento setup:store-config:set --base-url="" --base-url-secure=""
-   ```
+Alternatively localhost.xxxx URL's are available offline but change with every Lando rebuild.  See `lando info` for your URIs that point to this sandbox. And, always, you can modify the URI with:
 
+`lando magento setup:store-config:set --base-url=$PROVIDE_URL --base-url-secure=$PROVIDE_URL`
 
-# Customizing Lando
+Customizing Lando
+-----------------
 
-This repository ships with with a `.lando.base.yaml`. To modify your Lando setup, you have a few options:
+This repository ships with a `.lando.base.yaml` which provides your Magento services as well as a `.lando.yml` which provides additions and overrides to the `.lando.base.yml`.
 
- - Remove and replace `.lando.base.yaml`
- - Extend `.lando.base.yaml` with your own `.lando.yml` or `.lando.local.yml`
-   - This will allow you to override any of the properties found within `.lando.base.yaml`. You can rename the project, add new tooling, disable existing tooling and add/remove/modify services as needed.
-   
-For best practices, please refer to Lando's [landofile documentaion](https://docs.devwithlando.io/config/lando.html)
+You may be happy merging `.lando.base.yaml` into `.lando.yml`. To help you make that decision, checkout the [Landofile documentaion](https://docs.devwithlando.io/config/lando.html) for best practices.
 
-## Bonus Info
+Bonus Info
+----------
 
-Run `lando` to see available shortcuts such as `lando magento` and `lando composer`!
+We have some bonus tooling included. Review it with `lando`.
 
-`lando magento:setup:quick` is an alias for `lando magento setup:install` and is pre-configured to setup the Lando DB connection.
+```
+# Review additional Magento tooling
+cd lando-magento2-template
+lando --help magento:setup:destroy
+lando --help magento:setup:quick
+```
 
- - Defaults to developer mode.
- - See `lando magento:setup:quick --help` for additional configuration options.
- - For the sake of shortcuts, `lando magento:setup:destroy` is also available.
+`lando magento:setup:quick` is an alias for `lando magento setup:install` and is pre-configured to set up the Lando DB connection.
 
-## Where is my admin?
+Where is my admin?
+------------------
 
 If you did not pass specify arguments for `lando magento:setup:quick`, you will probably want to know your admin URI and to create an admin user.
-
  - Fetch Admin URI: `lando magento info:adminuri`
  - Create admin user: `lando magento admin:user:create`
+
+Cleanup
+-------
+
+```
+# Jump into repo directory
+cd lando-magento2-template
+# Destroy  everything
+lando destroy -y
+rm -r lando-magento2-template
+```
