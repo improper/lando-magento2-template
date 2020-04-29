@@ -74,7 +74,7 @@ tooling:
         describe: Magento Version
         interactive:
           type: input
-          default: 2.3
+          default: 2.4
           message: Magento Version
           weight: 600
 

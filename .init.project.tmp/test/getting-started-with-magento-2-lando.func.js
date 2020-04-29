@@ -64,7 +64,7 @@ describe('getting-started-with-magento-2-lando', function() {
     });
   });
 
-  it('auth json has automatically been generated', done => {
+  it('your auth json has automatically been generated', done => {
     process.chdir(path.resolve(__dirname, '../..'));
     const cli = new CliTest();
     cli.exec('cd lando-magento2-template && cat auth.json').then(res => {
@@ -79,7 +79,19 @@ describe('getting-started-with-magento-2-lando', function() {
   it('deploy mangento with configured database', done => {
     process.chdir(path.resolve(__dirname, '../..'));
     const cli = new CliTest();
-    cli.exec('lando start && lando composer install && lando magento:setup:quick --use-sample-data ').then(res => {
+    cli.exec('cd lando-magento2-template && lando start && lando composer install && lando magento:setup:quick ').then(res => {
+      if (res.error === null) {
+        done();
+      } else {
+        done(res.error);
+      }
+    });
+  });
+
+  it('confirm store is accessible via bash', done => {
+    process.chdir(path.resolve(__dirname, '../..'));
+    const cli = new CliTest();
+    cli.exec('curl -I -k --fail -s https://magento2.lndo.site/home | grep 200 && echo "Good to go."').then(res => {
       if (res.error === null) {
         done();
       } else {
@@ -91,7 +103,7 @@ describe('getting-started-with-magento-2-lando', function() {
   it('review additional magento tooling', done => {
     process.chdir(path.resolve(__dirname, '../..'));
     const cli = new CliTest();
-    cli.exec('lando --help magento:setup:destroy && lando --help magento:setup:quick').then(res => {
+    cli.exec('cd lando-magento2-template && lando --help magento:setup:destroy && lando --help magento:setup:quick').then(res => {
       if (res.error === null) {
         done();
       } else {

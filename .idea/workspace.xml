@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d233b413-7083-4a71-8bb3-e7c234f155d7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.init.project.tmp/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/.init.project.tmp/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.init.project.tmp/test/getting-started-with-magento-2-lando.func.js" beforeDir="false" afterPath="$PROJECT_DIR$/.init.project.tmp/test/getting-started-with-magento-2-lando.func.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.lando.base.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.lando.base.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/lando/tooling/magento.download.php" beforeDir="false" afterPath="$PROJECT_DIR$/dev/lando/tooling/magento.download.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -17,6 +19,31 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="implement-readme-tests" />
+                    <option name="lastUsedInstant" value="1588187230" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="master" />
+                    <option name="lastUsedInstant" value="1588187229" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
   </component>
   <component name="ProjectConfigurationFiles">
     <option name="files">
@@ -84,5 +111,17 @@
       <screen x="0" y="27" width="1680" height="1023" />
     </state>
     <state x="555" y="337" width="559" height="409" key="#Node.js_and_NPM/0.27.1680.1023@0.27.1680.1023" timestamp="1588183237547" />
+    <state x="100" y="127" width="1480" height="823" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1588186186586">
+      <screen x="0" y="27" width="1680" height="1023" />
+    </state>
+    <state x="100" y="127" width="1480" height="823" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.27.1680.1023@0.27.1680.1023" timestamp="1588186186586" />
+    <state x="531" y="279" width="618" height="518" key="find.popup" timestamp="1588187354725">
+      <screen x="0" y="27" width="1680" height="1023" />
+    </state>
+    <state x="531" y="279" width="618" height="518" key="find.popup/0.27.1680.1023@0.27.1680.1023" timestamp="1588187354725" />
+    <state x="503" y="251" width="672" height="678" key="search.everywhere.popup" timestamp="1588188615372">
+      <screen x="0" y="27" width="1680" height="1023" />
+    </state>
+    <state x="503" y="251" width="672" height="678" key="search.everywhere.popup/0.27.1680.1023@0.27.1680.1023" timestamp="1588188615372" />
   </component>
 </project>

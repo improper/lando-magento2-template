@@ -151,7 +151,7 @@ class magentoDownloaderCli
         shell_exec("cp -r /tmp/magento/. /app");
         file_put_contents(
             '/app/nginx.conf.sample',
-            fopen('https://raw.githubusercontent.com/magento/magento2/2.3/nginx.conf.sample', 'r')
+            fopen('https://raw.githubusercontent.com/magento/magento2/'.$this->input['mage-version'].'/nginx.conf.sample', 'r')
         );
         file_put_contents("/app/auth.json", $composerAuth);
     }

@@ -19,6 +19,7 @@ Important notes
         - pub/media
         - pub/static
      ```
+1. Last, the `lando magento:setup:quick` command accepts the `--use-sample-data` option. Keep in mind there are [known issues](https://community.magento.com/t5/Magento-2-x-Technical-Issues/Shipping-doesn-t-work-any-more-after-update-to-2-3-0/td-p/136097) with this in Magento 2.3
 
 Getting Started with Magento 2 & Lando
 ======================================
@@ -30,11 +31,15 @@ Quick Setup
 # Clone and access this repository
 git clone git@github.com:improper/lando-magento2-template.git
 cd lando-magento2-template
+```
 
+```
 # Review Magento Download Options
 cd lando-magento2-template
 lando --help magento:download
+```
 
+```
 # Download Magento. Drop arguments for interactive mode.
 cd lando-magento2-template
 lando magento:download --mage-edition "Open Source" \
@@ -44,23 +49,27 @@ lando magento:download --mage-edition "Open Source" \
     --github-token $MY_GITHUB_TOKEN \
     --notify-magento false \
     --notify-github false
+```
 
-# auth.json has automatically been generated
+```
+# Your auth.json has automatically been generated
 cd lando-magento2-template
 cat auth.json
+```
 
+```
 # Deploy Mangento with configured database
 cd lando-magento2-template
 lando start
 lando composer install
-lando magento:setup:quick --use-sample-data 
+lando magento:setup:quick 
 ```
 
 That's it! Your store is ready for development: https://magento2.lndo.site/  
 
 ```
 # Confirm store is accessible via bash
-curl -I -k https://magento2.lndo.site/ && echo 'Good to go!'
+curl -I -k --fail -s https://magento2.lndo.site/home | grep 200 && echo "Good to go."
 ```
 
 You should now be able to access your local installation of Magento: https://magento2.lndo.site/ (or whatever proxy value you have set in your lando.base.yaml file)
