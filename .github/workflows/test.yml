@@ -19,8 +19,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-        with:
-          ssh-key: ${{ secrets.DEPLOY_KEY_PRIVATE }}
+      - name: Test Git Clone
+        - run: git clone https://github.com/improper/lando-magento2-template.git
+        - run: exit 1
       - name: Setup Docker
         uses: docker-practice/actions-setup-docker@0.0.1
       - name: Setup NodeJS ${{ matrix.node-version }}
@@ -39,5 +40,6 @@ jobs:
       - name: Lando Version
         run: lando version
       - name: Install packages
+        run: yarn
+      - name: Execute tests
         run: yarn --cwd .init.project.tmp test
-      - run: yarn --cwd .init.project.tmp test
