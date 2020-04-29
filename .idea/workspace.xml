@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d233b413-7083-4a71-8bb3-e7c234f155d7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/lando-magento2-template.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/lando-magento2-template.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.init.project.tmp/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/.init.project.tmp/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.init.project.tmp/test/getting-started-with-magento-2-lando.func.js" beforeDir="false" afterPath="$PROJECT_DIR$/.init.project.tmp/test/getting-started-with-magento-2-lando.func.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/lando/tooling/magento.download.php" beforeDir="false" afterPath="$PROJECT_DIR$/dev/lando/tooling/magento.download.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lando-magento2-template/.github/ISSUE_TEMPLATE/bug_report.md" beforeDir="false" afterPath="$PROJECT_DIR$/lando-magento2-template/.github/ISSUE_TEMPLATE/bug_report.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lando-magento2-template/.github/ISSUE_TEMPLATE/feature_request.md" beforeDir="false" afterPath="$PROJECT_DIR$/lando-magento2-template/.github/ISSUE_TEMPLATE/feature_request.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lando-magento2-template/dev/lando/tooling/magento.download.php" beforeDir="false" afterPath="$PROJECT_DIR$/lando-magento2-template/dev/lando/tooling/magento.download.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
