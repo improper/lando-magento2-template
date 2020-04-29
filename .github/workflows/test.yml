@@ -19,13 +19,22 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: setup-docker
+      - name: Install SSH Key for GitHub
+        uses: shimataro/ssh-key-action@v2.0.2
+        with:
+          # SSH private key
+          key: ${{ secrets.DEPLOY_KEY_PRIVATE }}
+      - name: Setup Docker
         uses: docker-practice/actions-setup-docker@0.0.1
       - name: Setup NodeJS ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
       - name: Setup Lando
+        env:
+          MY_GITHUB_TOKEN: ${{ secrets.GIT_RATE_TOKEN }}
+          MAGE_PRIVATE_KEY: ${{ secrets.MAGENTO_PRIVATE_KEY }}
+          MAGE_PUBLIC_KEY: ${{ secrets.MAGENTO_PUBLIC_KEY }}
         run: sudo apt-get -y update
           && sudo apt-get -y install cgroup-bin curl
           && curl -fsSL -o /tmp/lando-latest.deb https://github.com/lando/lando/releases/download/v3.0.0-rrc.3/lando-v3.0.0-rrc.3.deb
