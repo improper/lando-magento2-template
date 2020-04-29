@@ -29,7 +29,7 @@ Quick Setup
 
 ```
 # Clone and access this repository
-git clone git@github.com:improper/lando-magento2-template.git
+git clone https://github.com/improper/lando-magento2-template.git
 cd lando-magento2-template
 ```
 
