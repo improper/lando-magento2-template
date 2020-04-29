@@ -19,8 +19,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Setup dockerize
-        uses: zcong1993/setup-dockerize@v1.2.0
+      - name: setup-docker
+        uses: docker-practice/actions-setup-docker@0.0.1
       - name: Setup NodeJS ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
