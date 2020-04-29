@@ -1,0 +1,42 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Docker
+        uses: docker-practice/actions-setup-docker@0.0.1
+      - name: Setup NodeJS ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Setup Lando
+        env:
+          MY_GITHUB_TOKEN: ${{ secrets.GIT_RATE_TOKEN }}
+          MAGE_PRIVATE_KEY: ${{ secrets.MAGENTO_PRIVATE_KEY }}
+          MAGE_PUBLIC_KEY: ${{ secrets.MAGENTO_PUBLIC_KEY }}
+        run: sudo apt-get -y update
+          && sudo apt-get -y install cgroup-bin curl
+          && curl -fsSL -o /tmp/lando-latest.deb https://github.com/lando/lando/releases/download/v3.0.0-rrc.3/lando-v3.0.0-rrc.3.deb
+          && sudo dpkg -i /tmp/lando-latest.deb
+      - name: Lando Version
+        run: lando version
+      - name: Install packages
+        run: yarn
+      - name: Execute tests
+        run: yarn --cwd .init.project.tmp test

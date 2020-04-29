@@ -124,6 +124,8 @@ class magentoDownloaderCli
         echo "\n    Magento has been downloaded! Now...";
         echo "\n      Execute: `lando start && lando composer install && lando magento:setup:quick #Optional --use-sample-data`";
         echo "\n";
+        echo "\n      If you experience difficulty installing Magento try running the above commands 1 at a time to see the error output";
+        echo "\n";
         echo "\n      That's it! You will then be able to access your Magento store at https://magento2.lndo.site/";
         echo "\n";
         echo "\n      Run `lando` to see available shortcuts such as `lando magento` and `lando composer`!";
@@ -138,7 +140,7 @@ class magentoDownloaderCli
     private function createProject($composerAuth, array $input)
     {
         shell_exec('rm -rf /tmp/magento');
-        shell_exec("export COMPOSER_AUTH='{$composerAuth}'; composer create-project --no-install --repository=https://repo.magento.com/ {$this->getEdition()} /tmp/magento {$input['mage-version']}");
+        shell_exec("export COMPOSER_AUTH='{$composerAuth}'; composer create-project -n --no-install --repository=https://repo.magento.com/ {$this->getEdition()} /tmp/magento {$input['mage-version']}");
     }
 
     /**
@@ -149,7 +151,7 @@ class magentoDownloaderCli
         shell_exec("cp -r /tmp/magento/. /app");
         file_put_contents(
             '/app/nginx.conf.sample',
-            fopen('https://raw.githubusercontent.com/magento/magento2/2.3/nginx.conf.sample', 'r')
+            fopen('https://raw.githubusercontent.com/magento/magento2/'.$this->input['mage-version'].'/nginx.conf.sample', 'r')
         );
         file_put_contents("/app/auth.json", $composerAuth);
     }
