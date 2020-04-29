@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Test Git Clone
         run: git clone https://github.com/improper/lando-magento2-template.git
-          && exit 1
+          && exit 1;
       - name: Setup Docker
         uses: docker-practice/actions-setup-docker@0.0.1
       - name: Setup NodeJS ${{ matrix.node-version }}
