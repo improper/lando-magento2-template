@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d233b413-7083-4a71-8bb3-e7c234f155d7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/lando-magento2-template.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/lando-magento2-template.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.init.project.tmp/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/.init.project.tmp/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.init.project.tmp/test/getting-started-with-magento-2-lando.func.js" beforeDir="false" afterPath="$PROJECT_DIR$/.init.project.tmp/test/getting-started-with-magento-2-lando.func.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.lando.base.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.lando.base.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dev/lando/tooling/magento.download.php" beforeDir="false" afterPath="$PROJECT_DIR$/dev/lando/tooling/magento.download.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lando-magento2-template/.github/ISSUE_TEMPLATE/bug_report.md" beforeDir="false" afterPath="$PROJECT_DIR$/lando-magento2-template/.github/ISSUE_TEMPLATE/bug_report.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lando-magento2-template/.github/ISSUE_TEMPLATE/feature_request.md" beforeDir="false" afterPath="$PROJECT_DIR$/lando-magento2-template/.github/ISSUE_TEMPLATE/feature_request.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lando-magento2-template/dev/lando/tooling/magento.download.php" beforeDir="false" afterPath="$PROJECT_DIR$/lando-magento2-template/dev/lando/tooling/magento.download.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +71,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs.mocha.mocha_node_package_dir" value="$PROJECT_DIR$/.init.project.tmp/node_modules/mocha" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
@@ -77,6 +80,29 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="getting-started-with-magento-2-lando.download magento drop arguments for interactive mode" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <mocha-package>$PROJECT_DIR$/.init.project.tmp/node_modules/mocha</mocha-package>
+      <working-directory>$PROJECT_DIR$/.init.project.tmp</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <ui>bdd</ui>
+      <extra-mocha-options />
+      <test-kind>TEST</test-kind>
+      <test-file>$PROJECT_DIR$/.init.project.tmp/test/getting-started-with-magento-2-lando.func.js</test-file>
+      <test-names>
+        <name value="getting-started-with-magento-2-lando" />
+        <name value="download magento drop arguments for interactive mode" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Mocha.getting-started-with-magento-2-lando.download magento drop arguments for interactive mode" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -111,6 +137,10 @@
       <screen x="0" y="27" width="1680" height="1023" />
     </state>
     <state x="555" y="337" width="559" height="409" key="#Node.js_and_NPM/0.27.1680.1023@0.27.1680.1023" timestamp="1588183237547" />
+    <state x="346" y="190" width="977" height="704" key="#getting-started-with-magento-2-lando.download_magento_drop_arguments_for_interactive_mode" timestamp="1588190065437">
+      <screen x="0" y="27" width="1680" height="1023" />
+    </state>
+    <state x="346" y="190" width="977" height="704" key="#getting-started-with-magento-2-lando.download_magento_drop_arguments_for_interactive_mode/0.27.1680.1023@0.27.1680.1023" timestamp="1588190065437" />
     <state x="100" y="127" width="1480" height="823" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1588186186586">
       <screen x="0" y="27" width="1680" height="1023" />
     </state>
@@ -119,9 +149,9 @@
       <screen x="0" y="27" width="1680" height="1023" />
     </state>
     <state x="531" y="279" width="618" height="518" key="find.popup/0.27.1680.1023@0.27.1680.1023" timestamp="1588187354725" />
-    <state x="503" y="251" width="672" height="678" key="search.everywhere.popup" timestamp="1588188615372">
+    <state x="503" y="251" width="672" height="678" key="search.everywhere.popup" timestamp="1588190166382">
       <screen x="0" y="27" width="1680" height="1023" />
     </state>
-    <state x="503" y="251" width="672" height="678" key="search.everywhere.popup/0.27.1680.1023@0.27.1680.1023" timestamp="1588188615372" />
+    <state x="503" y="251" width="672" height="678" key="search.everywhere.popup/0.27.1680.1023@0.27.1680.1023" timestamp="1588190166382" />
   </component>
 </project>

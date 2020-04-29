@@ -140,7 +140,7 @@ class magentoDownloaderCli
     private function createProject($composerAuth, array $input)
     {
         shell_exec('rm -rf /tmp/magento');
-        shell_exec("export COMPOSER_AUTH='{$composerAuth}'; composer create-project --no-install --repository=https://repo.magento.com/ {$this->getEdition()} /tmp/magento {$input['mage-version']}");
+        shell_exec("export COMPOSER_AUTH='{$composerAuth}'; composer create-project -n --no-install --repository=https://repo.magento.com/ {$this->getEdition()} /tmp/magento {$input['mage-version']}");
     }
 
     /**

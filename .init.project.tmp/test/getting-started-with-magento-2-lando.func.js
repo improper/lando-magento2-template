@@ -28,41 +28,41 @@ describe('getting-started-with-magento-2-lando', function() {
   // These tests are the main event
   // @todo: It would be nice to eventually get these into mocha after hooks
   // so they run after every test
-  it('clone and access this repository', done => {
-    process.chdir(path.resolve(__dirname, '../..'));
-    const cli = new CliTest();
-    cli.exec('git clone git@github.com:improper/lando-magento2-template.git && cd lando-magento2-template').then(res => {
-      if (res.error === null) {
-        done();
-      } else {
-        done(res.error);
-      }
-    });
-  });
+  // it('clone and access this repository', done => {
+  //   process.chdir(path.resolve(__dirname, '../..'));
+  //   const cli = new CliTest();
+  //   cli.exec('git clone git@github.com:improper/lando-magento2-template.git && cd lando-magento2-template').then(res => {
+  //     if (res.error === null) {
+  //       done();
+  //     } else {
+  //       done(res.error);
+  //     }
+  //   });
+  // });
+  //
+  // it('review magento download options', done => {
+  //   process.chdir(path.resolve(__dirname, '../..'));
+  //   const cli = new CliTest();
+  //   cli.exec('cd lando-magento2-template && lando --help magento:download').then(res => {
+  //     if (res.error === null) {
+  //       done();
+  //     } else {
+  //       done(res.error);
+  //     }
+  //   });
+  // });
 
-  it('review magento download options', done => {
-    process.chdir(path.resolve(__dirname, '../..'));
-    const cli = new CliTest();
-    cli.exec('cd lando-magento2-template && lando --help magento:download').then(res => {
-      if (res.error === null) {
-        done();
-      } else {
-        done(res.error);
-      }
-    });
-  });
-
-  it('download magento drop arguments for interactive mode', done => {
-    process.chdir(path.resolve(__dirname, '../..'));
-    const cli = new CliTest();
-    cli.exec('cd lando-magento2-template && lando magento:download --mage-edition "Open Source" \ &&     --mage-version 2.3 \ &&     --mage-access-key-private $MAGE_PRIVATE_KEY \ &&     --mage-access-key-public $MAGE_PUBLIC_KEY \ &&     --github-token $MY_GITHUB_TOKEN \ &&     --notify-magento false \ &&     --notify-github false').then(res => {
-      if (res.error === null) {
-        done();
-      } else {
-        done(res.error);
-      }
-    });
-  });
+  // it('download magento drop arguments for interactive mode', done => {
+  //   process.chdir(path.resolve(__dirname, '../..'));
+  //   const cli = new CliTest();
+  //   cli.exec('cd lando-magento2-template && lando magento:download --mage-edition "Open Source" \ &&     --mage-version 2.3 \ &&     --mage-access-key-private $MAGE_PRIVATE_KEY \ &&     --mage-access-key-public $MAGE_PUBLIC_KEY \ &&     --github-token $MY_GITHUB_TOKEN \ &&     --notify-magento false \ &&     --notify-github false').then(res => {
+  //     if (res.error === null) {
+  //       done();
+  //     } else {
+  //       done(res.error);
+  //     }
+  //   });
+  // });
 
   it('your auth json has automatically been generated', done => {
     process.chdir(path.resolve(__dirname, '../..'));
@@ -118,7 +118,7 @@ describe('getting-started-with-magento-2-lando', function() {
   it('jump into repo directory', done => {
     process.chdir(path.resolve(__dirname, '../..'));
     const cli = new CliTest();
-    cli.exec('cd lando-magento2-template && lando destroy -y && rm -r lando-magento2-template').then(res => {
+    cli.exec('cd lando-magento2-template && lando destroy -y && cd .. && rm -r lando-magento2-template').then(res => {
       if (res.error === null) {
         done();
       } else {

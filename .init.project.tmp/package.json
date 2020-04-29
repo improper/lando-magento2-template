@@ -11,7 +11,7 @@
   },
   "scripts": {
     "generate-tests": "leia  ../readme.md test -t 'Quick Setup' -t Setup -t Test -t Example -t 'Bonus Info' -c 'Cleanup'",
-    "test": "yarn generate-tests && mocha test --timeout 60000"
+    "test": "yarn generate-tests && mocha test --timeout 300000"
   },
   "dependencies": {
     "chai": "^4.2.0",

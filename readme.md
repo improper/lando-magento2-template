@@ -118,5 +118,5 @@ Cleanup
 cd lando-magento2-template
 # Destroy  everything
 lando destroy -y
-rm -r lando-magento2-template
+cd .. && rm -r lando-magento2-template
 ```
