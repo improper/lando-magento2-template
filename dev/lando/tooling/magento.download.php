@@ -70,6 +70,9 @@ class magentoDownloaderCli
 
                 $this->input[$requiredArg] = trim($trimmedInput);
             }
+
+            if($input['mage-version'] === '2.3' || $input['mage-version'] === '2.3.0')
+                throw new Exception('Know setup:install bug in Magento 2.3.0. Please specify 2.3.1 or higher');
         } catch (Exception $error) {
             echo "\n{$error->getMessage()}\n\n";
             exit(1);
