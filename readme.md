@@ -43,7 +43,7 @@ lando --help magento:download
 # Download Magento. Drop arguments for interactive mode.
 cd lando-magento2-template
 lando magento:download --mage-edition "Open Source" \
-    --mage-version 2.3 \
+    --mage-version 2.3.5 \
     --mage-access-key-private $MAGE_PRIVATE_KEY \
     --mage-access-key-public $MAGE_PUBLIC_KEY \
     --github-token $MY_GITHUB_TOKEN \
@@ -62,7 +62,7 @@ cat auth.json
 cd lando-magento2-template
 lando start
 lando composer install
-lando magento:setup:quick 
+lando magento:setup:quick --use-sample-data
 ```
 
 That's it! Your store is ready for development: https://magento2.lndo.site/  
