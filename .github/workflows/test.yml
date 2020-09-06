@@ -37,6 +37,6 @@ jobs:
       - name: Lando Version
         run: lando version
       - name: Install packages
-        run: yarn
+        run: yarn --cwd .init.project.tmp
       - name: Execute tests
         run: yarn --cwd .init.project.tmp test
