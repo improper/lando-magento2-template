@@ -1,4 +1,4 @@
-**FYI** - From one dev to another, as an improved alternative to this repository, most PHP apps hosted on Platform.sh can be cloned by Lando with a single `lando init` command. If starting with a new project, I highly suggest creating a Magento website from the [Platform.sh Marketplace](https://platform.sh/marketplace/) and then checking out the [Lando/Platform.sh docs](https://docs.platform.sh/development/local/lando.html).
+**FYI** - From one dev to another, as an improved alternative to this repository, most PHP apps hosted on Platform.sh can be cloned by Lando with a single `lando init` command. If starting with a new project, I highly suggest creating a Magento website from the [Platform.sh Marketplace](https://platform.sh/marketplace/) and then checking out the [Lando/Platform.sh docs](https://docs.platform.sh/development/local/lando.html). *Also, full disclosure—I am on the Platform.sh marketing team. This plug is unsolicited by Platform.sh and I am speaking as a fan and former customer of the product. 🙂*
 
 Important notes
 ---------------
