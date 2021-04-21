@@ -32,7 +32,7 @@ jobs:
           MAGE_PUBLIC_KEY: ${{ secrets.MAGENTO_PUBLIC_KEY }}
         run: sudo apt-get -y update
           && sudo apt-get -y install cgroup-bin curl
-          && curl -fsSL -o /tmp/lando-latest.deb https://github.com/lando/lando/releases/download/v3.0.0-rrc.3/lando-v3.0.0-rrc.3.deb
+          && curl -fsSL -o /tmp/lando-latest.deb https://github.com/lando/lando/releases/download/v3.1.2/lando-v3.1.2.deb
           && sudo dpkg -i /tmp/lando-latest.deb
       - name: Lando Version
         run: lando version
