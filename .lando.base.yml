@@ -25,6 +25,7 @@ config:
   webroot: pub
   database: mysql
   composer_version: '1.10.21'
+
   # Optionally activate xdebug
   xdebug: false
 
