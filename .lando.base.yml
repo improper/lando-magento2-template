@@ -24,6 +24,7 @@ config:
   php: '7.2'
   webroot: pub
   database: mysql
+  composer_version: '1.10'
 
   # Optionally activate xdebug
   xdebug: false
